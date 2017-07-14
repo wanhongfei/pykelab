@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2017/7/15 0:01
+# @Author  : wanhongfei@bytedance.com
+# @Comment : 集合工具类
+# @File    : collection_util.py
+# @Software: PyCharm
+
+def str_to_str_list(s,seperator=","):
+    '''
+    将字符串分割为字符串数组
+    :param s:
+    :param sep:
+    :return:
+    '''
+    return list(str(s).split(seperator))
+
+def str_to_int_list(s,seperator=","):
+    '''
+    将字符串分割为字符串数组
+    :param s:
+    :param sep:
+    :return:
+    '''
+    slist = str_to_str_list(s,seperator)
+    res = []
+    for item in slist:
+        res.append(int(item))
+    return res
+
+def beans_to_dict(list,fieldName):
+    '''
+    list相关属性和自身组成dict
+    :param list:
+    :param fieldName:
+    :return:
+    '''
+    res = {}
+    for item in list:
+        key = getattr(item,fieldName)
+        value = item
+        res[key] = value
+    return res
+
+def make_list(*args):
+    '''
+    组装数组
+    :param args:
+    :return:
+    '''
+    return list(args)
+
+def list_duplicate(src_list):
+    '''
+    数组去重
+    :param src_list:
+    :return:
+    '''
+    return list(set(src_list))
+
+def combine_to_list(a,b):
+    '''
+    数组并集
+    :param a:
+    :param b:
+    :return:
+    '''
+    return list(set(a).union(set(b)))
+
+def different_to_list(a,b):
+    '''
+    数组求差集，存在与a而不存于b
+    :param a:
+    :param b:
+    :return:
+    '''
+    return list(set(a).difference(set(b)))
+
+def intersection_to_list(a,b):
+    '''
+    数组求交集
+    :param a:
+    :param b:
+    :return:
+    '''
+    return list(set(a).intersection(set(b)))
