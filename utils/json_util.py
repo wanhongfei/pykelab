@@ -31,6 +31,8 @@ def obj_to_json(obj, skipkeys=False, ensure_ascii=True, check_circular=True,
     '''
     # 自定义类型无法进行json序列化，先转为dict
     obj = obj if not bean_util.is_custom_type(obj) else bean_util.obj_to_dict(obj)
+    # set=>list
+    obj = obj if not bean_util.is_set(obj) else list(obj)
     return json.dumps(obj,skipkeys,ensure_ascii,
                check_circular,allow_nan,cls,
                indent,separators,encoding,
