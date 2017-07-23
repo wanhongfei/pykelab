@@ -5,14 +5,12 @@
 # @Comment : 
 # @File    : sqlalchemy.py
 # @Software: PyCharm
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from sqlalchemy import create_engine
-
 # 创建对象的基类,所有model继承base
 Base = declarative_base()
-
 
 def single_db_init(db_uri):
     '''
@@ -24,11 +22,12 @@ def single_db_init(db_uri):
     engine = create_engine(db_uri)
     # 创建DBSession类型:
     DBSession = sessionmaker(bind=engine)
+    DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
     return DBSession
 
 
-def multi_db_init(**kv_db_uri):
+def multi_db_init(kv_db_uri={}):
     '''
     多数据库初始化方法
     :param db_uri:
@@ -37,6 +36,26 @@ def multi_db_init(**kv_db_uri):
     ret = {}
     for key in kv_db_uri:
         engine = create_engine(kv_db_uri.get(key))
-        ret[key] = sessionmaker(bind=engine)
+        Session = sessionmaker(bind=engine)
+        Session.configure(bind=engine)
+        ret[key] = Session
         Base.metadata.create_all(engine)
     return ret
+
+def open_session(Session=None):
+    '''
+    开启会话
+    :param Session:
+    :return:
+    '''
+    return Session()
+
+def commit_session(session=None):
+    '''
+    开启会话
+    :param Session:
+    :return:
+    '''
+    session.commit
+    session.close()
+
