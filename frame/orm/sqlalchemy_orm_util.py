@@ -12,6 +12,7 @@ from sqlalchemy.orm import sessionmaker
 # 创建对象的基类,所有model继承base
 Base = declarative_base()
 
+
 def single_db_init(db_uri):
     '''
     简易数据库初始化方法
@@ -42,6 +43,7 @@ def multi_db_init(kv_db_uri={}):
         Base.metadata.create_all(engine)
     return ret
 
+
 def open_session(Session=None):
     '''
     开启会话
@@ -50,12 +52,22 @@ def open_session(Session=None):
     '''
     return Session()
 
+
 def commit_session(session=None):
     '''
-    开启会话
+    提交会话
     :param Session:
     :return:
     '''
-    session.commit
+    session.commit()
     session.close()
 
+
+def rollback_session(session=None):
+    '''
+    回滚会话
+    :param Session:
+    :return:
+    '''
+    session.rollback()
+    session.close()
