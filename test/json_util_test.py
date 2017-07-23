@@ -11,13 +11,15 @@ if __name__ == '__main__':
     '''
     test
     '''
+
+
     class A(object):
-
         def __init__(self):
-            self.a=1
-            self.b="2"
-            self.c=[]
+            self.a = 1
+            self.b = "2"
+            self.c = []
 
-    a=A()
+
+    a = A()
 
     print obj_to_formatting_json(a)

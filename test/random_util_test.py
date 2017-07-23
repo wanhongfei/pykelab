@@ -7,7 +7,5 @@
 # @Software: PyCharm
 import random
 
-from utils.random_util import randsample, randint
-
 if __name__ == '__main__':
     print  random.randrange(9, 1000, 2)

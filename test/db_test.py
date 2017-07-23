@@ -5,17 +5,15 @@
 # @Comment : 
 # @File    : db_test.py
 # @Software: PyCharm
+from frame.orm.db_manager import DBManager
 from test.models.user import User
 
-if __name__ == '__main__':
-    from frame.orm.sqlalchemy_orm_util import multi_db_init, open_session, commit_session
+DBManager.get_instance() \
+    .db_uri("test", "mysql+mysqldb://root:19940921@localhost:3306/test",
+            pool_size=15) \
+    .db_uri("test2", "mysql+mysqldb://root:19940921@localhost:3306/test2",
+            pool_size=15)
 
-    ret = multi_db_init({
-        "test": "mysql+mysqldb://root:19940921@localhost:3306/test",
-        "test2": "mysql+mysqldb://root:19940921@localhost:3306/test2",
-    })
-    user = User()
-    user.name = "haha"
-    session = open_session(ret['test2'])
-    session.add(user)
-    commit_session(session)
+if __name__ == '__main__':
+    with DBManager.get_instance().session_ctx(name="test2") as session:
+        print session.query(User.name).all()

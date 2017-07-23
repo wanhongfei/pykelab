@@ -6,7 +6,20 @@
 # @File    : collection_util.py
 # @Software: PyCharm
 
-def str_to_str_list(s,seperator=","):
+def is_empty(items):
+    '''
+    判空
+    :param items:
+    :return:
+    '''
+    if items:
+        # False,0,'',[],{},() 都视为False
+        return False
+    else:
+        return True
+
+
+def str_to_str_list(s, seperator=","):
     '''
     将字符串分割为字符串数组
     :param s:
@@ -15,20 +28,22 @@ def str_to_str_list(s,seperator=","):
     '''
     return list(str(s).split(seperator))
 
-def str_to_int_list(s,seperator=","):
+
+def str_to_int_list(s, seperator=","):
     '''
     将字符串分割为字符串数组
     :param s:
     :param sep:
     :return:
     '''
-    slist = str_to_str_list(s,seperator)
+    slist = str_to_str_list(s, seperator)
     res = []
     for item in slist:
         res.append(int(item))
     return res
 
-def beans_to_dict(list,fieldName):
+
+def beans_to_dict(list, fieldName):
     '''
     list相关属性和自身组成dict
     :param list:
@@ -37,10 +52,11 @@ def beans_to_dict(list,fieldName):
     '''
     res = {}
     for item in list:
-        key = getattr(item,fieldName)
+        key = getattr(item, fieldName)
         value = item
         res[key] = value
     return res
+
 
 def make_list(*args):
     '''
@@ -50,6 +66,7 @@ def make_list(*args):
     '''
     return list(args)
 
+
 def list_duplicate(src_list):
     '''
     数组去重
@@ -58,7 +75,8 @@ def list_duplicate(src_list):
     '''
     return list(set(src_list))
 
-def combine_to_list(a,b):
+
+def combine_to_list(a, b):
     '''
     数组并集
     :param a:
@@ -67,7 +85,8 @@ def combine_to_list(a,b):
     '''
     return list(set(a).union(set(b)))
 
-def different_to_list(a,b):
+
+def different_to_list(a, b):
     '''
     数组求差集，存在与a而不存于b
     :param a:
@@ -76,7 +95,8 @@ def different_to_list(a,b):
     '''
     return list(set(a).difference(set(b)))
 
-def intersection_to_list(a,b):
+
+def intersection_to_list(a, b):
     '''
     数组求交集
     :param a:

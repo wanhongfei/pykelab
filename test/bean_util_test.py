@@ -11,20 +11,23 @@ if __name__ == '__main__':
     '''
     test
     '''
-    class A(object):
 
+
+    class A(object):
         def __init__(self):
-            self.a=1
-            self.b="2"
-            self.c=[]
+            self.a = 1
+            self.b = "2"
+            self.c = []
             self._d = "dasd"
             self.__e = B()
 
-    class B:
 
+    class B:
         def __init__(self):
             self.sa = "sda"
-    a=A()
+
+
+    a = A()
     print is_custom_type(a)
     print is_custom_type(B())
-    print obj_to_dict(a,PUBLIC_PROTECTED_LEVEL)
+    print obj_to_dict(a, PUBLIC_PROTECTED_LEVEL)

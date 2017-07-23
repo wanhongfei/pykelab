@@ -9,7 +9,7 @@
 # 定义User对象:
 from sqlalchemy import Column, Integer, String
 
-from frame.orm.sqlalchemy_orm_util import Base
+from frame.orm.db_manager import Base
 
 
 class User(Base):

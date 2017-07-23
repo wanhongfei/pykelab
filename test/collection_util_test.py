@@ -5,7 +5,7 @@
 # @Comment : 
 # @File    : collection_util_test.py
 # @Software: PyCharm
-from utils.collection_util import intersection_to_list, exist_in_a_not_in_b_to_list, different_to_list
+from utils.collection_util import different_to_list
 
 if __name__ == '__main__':
     # class A(object):
@@ -19,4 +19,4 @@ if __name__ == '__main__':
     # bean_dict = beans_to_dict([A(1,"sa"),A(2,3)],"id")
     # for key in bean_dict:
     #     print key,bean_dict[key]
-    print different_to_list(list([1,2,3,45]),list([2,4,5,6]))
+    print different_to_list(list([1, 2, 3, 45]), list([2, 4, 5, 6]))

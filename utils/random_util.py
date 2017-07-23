@@ -35,3 +35,12 @@ def randsample(len=1, ch=DEFAULT_SAMPLE_CH_ARRAY, sep=""):
     :return:
     '''
     return string_util.join(random.sample(ch, len), sep)
+
+
+def randchoice(items):
+    '''
+    随机返回一个元素
+    :param array:
+    :return:
+    '''
+    return random.choice(items)

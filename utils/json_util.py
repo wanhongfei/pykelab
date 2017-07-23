@@ -12,8 +12,8 @@ import bean_util
 
 
 def obj_to_json(obj, skipkeys=False, ensure_ascii=True, check_circular=True,
-        allow_nan=True, cls=None, indent=None, separators=None,
-        encoding='utf-8', default=None, sort_keys=False):
+                allow_nan=True, cls=None, indent=None, separators=None,
+                encoding='utf-8', default=None, sort_keys=False):
     '''
     对象序列化为 json
     :param obj:
@@ -33,10 +33,11 @@ def obj_to_json(obj, skipkeys=False, ensure_ascii=True, check_circular=True,
     obj = obj if not bean_util.is_custom_type(obj) else bean_util.obj_to_dict(obj)
     # set=>list
     obj = obj if not bean_util.is_set(obj) else list(obj)
-    return json.dumps(obj,skipkeys,ensure_ascii,
-               check_circular,allow_nan,cls,
-               indent,separators,encoding,
-               default,sort_keys)
+    return json.dumps(obj, skipkeys, ensure_ascii,
+                      check_circular, allow_nan, cls,
+                      indent, separators, encoding,
+                      default, sort_keys)
+
 
 def obj_to_formatting_json(obj):
     '''
@@ -48,6 +49,7 @@ def obj_to_formatting_json(obj):
     obj = obj if not bean_util.is_custom_type(obj) else bean_util.obj_to_dict(obj)
     print obj
     return json.dumps(obj, sort_keys=True, indent=4, separators=(',', ': '))
+
 
 def json_to_obj(json):
     '''
