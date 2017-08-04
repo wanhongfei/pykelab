@@ -1,4 +1,4 @@
-#coding=utf8
+#!/bin/bash
 #***************************************************************************
 #
 # Copyright (c) 2017 ByteDance.com, Inc. All Rights Reserved
@@ -6,19 +6,16 @@
 #*************************************************************************/
 
 #
-#@file __init__.py
+#@file clean.sh
 #
-#@brief __init__.py
+#@brief clean.sh
 #
 #@author wanhongfei@bytedance.com
-#@date   2017-08-04
-#@update 2017-08-04
+#@date   2017-07-16
+#@update 2017-07-16
 #
 #
-import os,sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
+find ./ -name "*.pyc" -print | xargs -n1 rm -rf
+find ./ -name "*.swp" -print | xargs -n1 rm -rf
 
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, PROJECT_PATH)
