@@ -1,25 +1,27 @@
-#coding=utf8
-#***************************************************************************
+# coding=utf8
+# ***************************************************************************
 #
 # Copyright (c) 2017 ByteDance.com, Inc. All Rights Reserved
 #
-#*************************************************************************/
+# *************************************************************************/
 
 #
-#@file common.py
+# @file common.py
 #
-#@brief common.py
+# @brief common.py
 #
-#@author wanhongfei@bytedance.com
-#@date   2017-08-06
-#@update 2017-08-06
+# @author wanhongfei@bytedance.com
+# @date   2017-08-06
+# @update 2017-08-06
 #
 #
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-def get_param(request,param_name,default=None):
+
+def get_param(request, param_name, default=None):
     '''
     get param value of request(get & post)
     '''
@@ -27,4 +29,3 @@ def get_param(request,param_name,default=None):
         return str(request.REQUEST.get('param_name'))
     else:
         return default
-    
