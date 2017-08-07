@@ -21,11 +21,11 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def get_param(request, param_name, default=None):
+def get_param(request, param_name, default=None, type=str):
     '''
     get param value of request(get & post)
     '''
-    if request.REQUEST.get('param_name'):
-        return str(request.REQUEST.get('param_name'))
+    if request.REQUEST.get(param_name):
+        return type(request.REQUEST.get(param_name))
     else:
         return default
