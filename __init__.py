@@ -15,7 +15,8 @@
 # @update 2017-08-04
 #
 #
-import os, sys
+import os
+import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')

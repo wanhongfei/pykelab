@@ -11,8 +11,8 @@ function _M.get(url)
 end
 
 -- post请求指定url，并获取response
-function _M.post(url,body)
-    local res = ngx.location.capture(url,{method=ngx.HTTP_POST, body=body})
+function _M.post(url, body)
+    local res = ngx.location.capture(url, { method = ngx.HTTP_POST, body = body })
     if res.status == 200 then
         return res.body
     end

@@ -5,11 +5,11 @@
 -- Time: 17:14
 -- To change this template use File | Settings | File Templates.
 --
-package.path = package.path ..';D:\\workspace\\pykelab_vf\\lua\\?.lua';
+package.path = package.path .. ';D:\\workspace\\pykelab_vf\\lua\\?.lua';
 local common = require 'ngx.utils.common'
 ngx.say(common:get_param('a'))
 
-local uri = common:set_param('b','222')
+local uri = common:set_param('b', '222')
 ngx.say(uri)
 
 ngx.say(common:generate_req_id())

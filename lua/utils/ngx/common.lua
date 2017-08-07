@@ -33,8 +33,8 @@ end
 
 -- 设置url参数
 function _M.set_url_params(kv)
-    local args=ngx.req.get_uri_args()
-    for k,v in pairs(kv) do
+    local args = ngx.req.get_uri_args()
+    for k, v in pairs(kv) do
         args[k] = v
     end
     ngx.req.set_uri_args(args)
