@@ -20,19 +20,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-import time
 
-
-def default_callback(func_name, warn_threshold, *argv, **kvargv):
+def cros_domain(allow_host="*", allow_method="GET,POST,PUT,DELETE,OPTION", allow_headers="*", max_age=1000):
     '''
-    默认回调函数
-    '''
-    pass
-
-
-def timer(callback=default_callback, warn_threshold=1):
-    '''
-    运行计时
+    跨域
     '''
 
     def decorator(func=None):
@@ -44,14 +35,11 @@ def timer(callback=default_callback, warn_threshold=1):
             '''
             被装饰函数的参数
             '''
-            start_time = time.time()
-            data = func(*argv, **kvargv)
-            end_time = time.time()
-            # 超过设定值进行回调,可记录慢sql 
-            if callback and end_time - start_time > warn_threshold:
-                callback(func.__name__, warn_threshold, *argv, **kvargv)
-            return data
-
+            response = func(*argv, **kvargv)
+            response["Access-Control-Allow-Origin"] = allow_host
+            response["Access-Control-Allow-Methods"] = allow_method
+            response["Access-Control-Max-Age"] = max_age
+            response["Access-Control-Allow-Headers"] = allow_headers
+            return response
         return wrapper
-
     return decorator
