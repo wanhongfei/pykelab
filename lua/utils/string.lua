@@ -35,9 +35,42 @@ function _M.endwith(str, suffix)
     return sub(str, #str - #suffix, #str) == suffix
 end
 
---format
+-- format
 function _M.format(str, ...)
     return string.format(str, ...)
+end
+
+-- find
+function _M.find(str, sub)
+    return string.find(str, sub)
+end
+
+-- tb to string
+function _M.tb_2_str(tb, sep)
+    str = ''
+    for k, v in pairs(tb) do
+        str = str .. k .. "=" .. v .. sep
+    end
+    return str.sub(str, #str - #sep, #str)
+end
+
+-- arr to string
+function _M.arr_2_str(tb, sep)
+    str = ''
+    for k, v in ipairs(tb) do
+        str = str .. v .. sep
+    end
+    return str.sub(str, #str - #sep, #str)
+end
+
+-- str to int
+function _M.str_2_int(str)
+    return tonumber(str)
+end
+
+-- int to str
+function _M.int_2_str(str)
+    return tostring(str)
 end
 
 return _M
