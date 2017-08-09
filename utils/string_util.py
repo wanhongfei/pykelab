@@ -75,3 +75,13 @@ def format(pattern, *args):
     :return:
     '''
     return str(pattern).format(*args)
+
+
+def cast(str, type):
+    '''
+    转换基本类型
+    :param str:
+    :param type:
+    :return:
+    '''
+    return type(str)

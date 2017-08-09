@@ -9,3 +9,4 @@ from utils import string_util
 
 if __name__ == '__main__':
     print string_util.format("{}+{}={}", 1, 2, 3)
+    print string_util.cast("1",float)
