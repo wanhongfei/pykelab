@@ -11,7 +11,7 @@ import urllib
 import urllib2
 
 
-def post_resp_content(url, values, header={}, is_json_body=False):
+def post_json_resp(url, values, header={}, is_json_body=False):
     data = None
     if is_json_body:
         header['Content-Type'] = 'application/json'
@@ -25,7 +25,7 @@ def post_resp_content(url, values, header={}, is_json_body=False):
     return data
 
 
-def get_resp_content(url):
+def get_json_resp(url):
     '''
     get_resp_content
     '''

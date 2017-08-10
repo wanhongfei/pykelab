@@ -6,6 +6,21 @@
 # @File    : collection_util.py
 # @Software: PyCharm
 
+def get_param(obj, para_name, default=None, type=str):
+    '''
+    获取参数
+    :param obj:
+    :param para_name:
+    :param default:
+    :param type:
+    :return:
+    '''
+    if obj.get(para_name):
+        return type(obj.get(para_name))
+    else:
+        return default
+
+
 def is_empty(items):
     '''
     判空
