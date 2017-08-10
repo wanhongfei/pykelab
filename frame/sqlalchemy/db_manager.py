@@ -8,9 +8,9 @@
 import threading
 from contextlib import contextmanager
 
-from frame.orm.db_util import get_db_sessionmaker, Base
-from frame.utils import is_empty
-from frame.utils import randchoice
+from frame.sqlalchemy.db_util import get_db_sessionmaker, Base
+from frame.utils.collection_util import is_empty
+from frame.utils.random_util import randchoice
 
 Base = Base
 

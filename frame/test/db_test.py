@@ -5,7 +5,7 @@
 # @Comment : 
 # @File    : db_test.py
 # @Software: PyCharm
-from frame.orm.db_manager import DBManager
+from frame.sqlalchemy.db_manager import DBManager
 from frame.test.models.user import User
 
 DBManager.get_instance() \
