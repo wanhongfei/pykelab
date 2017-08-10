@@ -6,7 +6,7 @@
 # @File    : collection_util.py
 # @Software: PyCharm
 
-def get_param(obj, para_name, default=None, type=str):
+def get_param(obj, para_name, default=None, type=None):
     '''
     获取参数
     :param obj:
@@ -15,8 +15,9 @@ def get_param(obj, para_name, default=None, type=str):
     :param type:
     :return:
     '''
-    if obj.get(para_name):
-        return type(obj.get(para_name))
+    value = obj.get(para_name)
+    if value:
+        return value if not type else type(value)
     else:
         return default
 

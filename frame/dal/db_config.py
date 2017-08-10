@@ -49,9 +49,3 @@ class DBConfig(object):
         get config of django orm config
         '''
         return self.config
-
-
-db1 = DBConfig(dbname='haha', user='root', pwd='haha')
-db2 = DBConfig(name='db2', dbname='haha', user='root', pwd='haha')
-db3 = DBConfig(name='db3', dbname='haha', user='root', pwd='haha')
-print db1.add_config(db2).add_config(db3).django_orm_db_config()

@@ -58,10 +58,3 @@ def get_logger(logger_name):
     获取logger
     '''
     return logging.getLogger(logger_name)
-
-
-log = get_logger(__name__)
-log.debug('aaaa')
-log.error('bbbb')
-log.info('sdaa')
-log.warn('dada')

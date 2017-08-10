@@ -20,27 +20,25 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-import json
+from frame.utils.json_util import json_to_obj
+from frame.utils.collection_util import get_param
 
 
-def get_param(request, param_name, default=None, type=str):
+def get_req_param(request, param_name, default=None, type=str):
     '''
     get param value of request(get & post)
     '''
-    if request.REQUEST.get(param_name):
-        return type(request.REQUEST.get(param_name))
-    else:
-        return default
+    return get_param(request.REQUEST, param_name, default, type)
 
 
-def get_session(request, key):
+def get_session(request, key, default=None):
     '''
     get value from session by key
     :param request:
     :param key:
     :return:
     '''
-    return request.session[key]
+    return get_param(request.session, key, default, None)
 
 
 def set_session(request, key, value):
@@ -102,14 +100,14 @@ def set_cookie(request, kv):
         request.set_cookie(k, v)
 
 
-def get_cookie(request, key):
+def get_cookie(request, key, default=None):
     '''
     获取cookie
     :param request:
     :param key:
     :return:
     '''
-    return request.COOKIES[key]
+    return get_param(request.COOKIES, key, default, None)
 
 
 def get_client_ip(request):
@@ -157,7 +155,7 @@ def post_json_data(request):
     :param request:
     :return:
     '''
-    return json.loads(request.raw_post_data)
+    return json_to_obj(request.raw_post_data)
 
 
 def get_path(request):

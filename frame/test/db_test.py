@@ -6,7 +6,7 @@
 # @File    : db_test.py
 # @Software: PyCharm
 from frame.orm.db_manager import DBManager
-from test.models.user import User
+from frame.test.models.user import User
 
 DBManager.get_instance() \
     .db_uri("test", "mysql+mysqldb://root:19940921@localhost:3306/test",
