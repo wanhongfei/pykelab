@@ -9,8 +9,8 @@ import threading
 from contextlib import contextmanager
 
 from frame.orm.db_util import get_db_sessionmaker, Base
-from utils.collection_util import is_empty
-from utils.random_util import randchoice
+from frame.utils import is_empty
+from frame.utils import randchoice
 
 Base = Base
 

@@ -8,7 +8,7 @@
 
 from django.http import StreamingHttpResponse
 
-from utils.os_util import get_file_extension
+from frame.utils import get_file_extension
 
 DEFAULT_CONTENT_TYPE = "text/plain"
 EXT_TO_CONTENT_TYPE = {

@@ -5,7 +5,7 @@
 # @Comment : 
 # @File    : bean_util_test.py
 # @Software: PyCharm
-from utils.bean_util import is_custom_type, obj_to_dict, PUBLIC_PROTECTED_LEVEL
+from frame.utils import is_custom_type, obj_to_dict, PUBLIC_PROTECTED_LEVEL
 
 if __name__ == '__main__':
     '''

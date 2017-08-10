@@ -5,7 +5,7 @@
 # @Comment : 
 # @File    : collection_util_test.py
 # @Software: PyCharm
-from utils.collection_util import different_to_list
+from frame.utils import different_to_list
 
 if __name__ == '__main__':
     # class A(object):

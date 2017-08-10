@@ -5,7 +5,7 @@
 # @Comment : 
 # @File    : json_util_test.py
 # @Software: PyCharm
-from utils.json_util import obj_to_formatting_json
+from frame.utils import obj_to_formatting_json
 
 if __name__ == '__main__':
     '''

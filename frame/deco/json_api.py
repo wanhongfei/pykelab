@@ -7,7 +7,7 @@
 # @Software: PyCharm
 from django.http import HttpResponse
 
-from utils import json_util
+from frame.utils import json_util
 
 
 def json_api(func):

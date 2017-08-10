@@ -7,7 +7,7 @@
 # @Software: PyCharm
 import os
 
-from utils import conf_util
+from frame.utils import conf_util
 
 if __name__ == '__main__':
     print conf_util.conf(os.path.join(os.path.abspath(os.path.dirname(__file__)), "test.conf"), "dev")
