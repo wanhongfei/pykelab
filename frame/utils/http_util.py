@@ -32,5 +32,12 @@ def get_json_resp(url):
     request = urllib2.Request(url)
     response = urllib2.urlopen(request)
     html = response.read()
-    data = json.loads(html)
-    return data
+    # data = json.loads(html)
+    # return data
+
+
+import time
+start_time = time.time()
+get_json_resp("https://www.okcoin.cn/api/v1/ticker.do?symbol=btc_cny")
+end_time = time.time()
+print (end_time-start_time)*1000

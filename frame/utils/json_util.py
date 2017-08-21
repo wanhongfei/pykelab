@@ -7,8 +7,18 @@
 # @Software: PyCharm
 
 import json
+from datetime import date, datetime
 
 import bean_util
+
+class ComplexEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
+        elif isinstance(obj, date):
+            return obj.strftime('%Y-%m-%d')
+        else:
+            return json.JSONEncoder.default(self, obj)
 
 
 def obj_to_json(obj, skipkeys=False, ensure_ascii=True, check_circular=True,
@@ -36,7 +46,7 @@ def obj_to_json(obj, skipkeys=False, ensure_ascii=True, check_circular=True,
     return json.dumps(obj, skipkeys, ensure_ascii,
                       check_circular, allow_nan, cls,
                       indent, separators, encoding,
-                      default, sort_keys)
+                      default, sort_keys, cls=ComplexEncoder)
 
 
 def obj_to_formatting_json(obj):

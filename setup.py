@@ -29,5 +29,6 @@ setup(
     install_requires=[
         'django',
         'sqlalchemy',
+        'pycrypto',
     ]
 )

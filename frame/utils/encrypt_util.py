@@ -73,3 +73,29 @@ def check_pbkdf2_sha256_passwd(pwd, epwd):
     :return:
     '''
     return str(make_password(str(pwd), str(epwd)))
+
+
+from Crypto.Cipher import AES
+from binascii import b2a_hex, a2b_hex
+
+
+class AESEncoder(object):
+    '''
+    aes 加密算法
+    '''
+
+    def __init__(self, key):
+        self.key = hashlib.md5(key).hexdigest()
+        self.mode = AES.MODE_CBC
+
+    def encrypt(self, text):
+        if len(text) % 16 != 0:
+            text = text + str((16 - len(text) % 16) * '0')
+        cryptor = AES.new(self.key, self.mode, b'0000000000000000')
+        self.ciphertext = cryptor.encrypt(text)
+        return b2a_hex(self.ciphertext)
+
+    def decrypt(self, text):
+        cryptor = AES.new(self.key, self.mode, b'0000000000000000')
+        plain_text = cryptor.decrypt(a2b_hex(text))
+        return plain_text.rstrip('\0').rstrip('0')

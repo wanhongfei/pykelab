@@ -28,7 +28,15 @@ def get_req_param(request, param_name, default=None, type=str):
     '''
     get param value of request(get & post)
     '''
-    return get_param(request.REQUEST, param_name, default, type)
+    value = get_param(request.REQUEST, param_name, default, type)
+    if value:
+        return value
+    elif request.raw_post_data:
+        data = json_to_obj(request.raw_post_data)
+        if data.get(param_name):
+            return type(data.get(param_name))
+    else:
+        return default
 
 
 def get_session(request, key, default=None):

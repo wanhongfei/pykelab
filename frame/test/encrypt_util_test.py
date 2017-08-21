@@ -5,7 +5,10 @@
 # @Comment : 
 # @File    : encrypt_util_test.py
 # @Software: PyCharm
-from frame.utils import encrypt_util
+from frame.utils.encrypt_util import AESEncoder
 
 if __name__ == '__main__':
-    print encrypt_util.encode("hahah", "sha1")
+    aes = AESEncoder('1111111111111111')
+    s= aes.encrypt("osao")
+    b= aes.decrypt(s)
+    print b
