@@ -35,28 +35,18 @@ def is_empty(items):
         return True
 
 
-def str_to_str_list(s, seperator=","):
+def str_to_list(s, seperator=",", type=str):
     '''
     将字符串分割为字符串数组
     :param s:
     :param sep:
     :return:
     '''
-    return list(str(s).split(seperator))
-
-
-def str_to_int_list(s, seperator=","):
-    '''
-    将字符串分割为字符串数组
-    :param s:
-    :param sep:
-    :return:
-    '''
-    slist = str_to_str_list(s, seperator)
-    res = []
-    for item in slist:
-        res.append(int(item))
-    return res
+    sp_list = str(s).split(seperator)
+    ret = []
+    for item in sp_list:
+        ret.append(type(item))
+    return ret
 
 
 def beans_to_dict(list, fieldName):

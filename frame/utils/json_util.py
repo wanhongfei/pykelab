@@ -11,7 +11,12 @@ from datetime import date, datetime
 
 import bean_util
 
+
 class ComplexEncoder(json.JSONEncoder):
+    '''
+    处理datetime和date无法json序列化的问题
+    '''
+
     def default(self, obj):
         if isinstance(obj, datetime):
             return obj.strftime('%Y-%m-%d %H:%M:%S')
@@ -61,10 +66,10 @@ def obj_to_formatting_json(obj):
     return json.dumps(obj, sort_keys=True, indent=4, separators=(',', ': '))
 
 
-def json_to_obj(json):
+def json_to_obj(json, type=str):
     '''
     json 字符串转为对象
     :param json:
     :return:
     '''
-    return json.load(json)
+    return type(json.load(json))

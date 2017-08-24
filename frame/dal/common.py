@@ -25,6 +25,6 @@ def dict_to_model(dict_kv, model_type):
     else:
         obj = model_type.objects.create()
     for k, v in dict_kv.items():
-        if hasattr(obj, k):
+        if v != None and hasattr(obj, k):
             setattr(obj, k, v)
     return obj
